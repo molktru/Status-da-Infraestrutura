@@ -16,7 +16,6 @@ https://molktru.github.io/Status-da-Infraestrutura/
 
 ## 🏗️ Arquitetura do projeto
 
-[print](Cloud.jpg)
 
 A aplicação utiliza uma arquitetura simples e moderna baseada em **Serverless**.
 
