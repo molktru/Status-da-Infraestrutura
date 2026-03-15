@@ -93,7 +93,10 @@ document.getElementById("time").innerText = "Última atualização: " + formatte
 })
 .catch(() => {
 
-document.getElementById("status").innerText = "API Offline";
+const status = document.getElementById("status");
+
+status.innerText = "API Offline";
+status.style.color = "red";
 
 });
 
