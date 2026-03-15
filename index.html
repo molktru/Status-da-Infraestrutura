@@ -1,18 +1,97 @@
-<h1>Status da Infraestrutura</h1>
+<!DOCTYPE html>
+<html>
 
-<div id="output"></div>
+<head>
+
+<title>Cloud Infrastructure Status</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6f9;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.card{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+width:350px;
+text-align:center;
+}
+
+h1{
+margin-top:0;
+color:#2c3e50;
+}
+
+.status{
+font-size:24px;
+font-weight:bold;
+color:#27ae60;
+margin:15px 0;
+}
+
+.info{
+color:#555;
+margin:5px 0;
+}
+
+.timestamp{
+margin-top:20px;
+font-size:12px;
+color:#888;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>Cloud Status</h1>
+
+<div class="info">Service</div>
+<div id="service">Carregando...</div>
+
+<div class="info">Status</div>
+<div class="status" id="status">Carregando...</div>
+
+<div class="info">Provider</div>
+<div id="provider">Carregando...</div>
+
+<div class="timestamp" id="time"></div>
+
+</div>
 
 <script>
+
 fetch("https://statusinfra.azurewebsites.net/api/status")
 .then(response => response.json())
 .then(data => {
 
-document.getElementById("output").innerHTML =
-"Service: " + data.service + "<br>" +
-"Status: " + data.status + "<br>" +
-"Provider: " + data.provider + "<br>" +
-"Timestamp: " + data.timestamp;
+document.getElementById("service").innerText = data.service;
+document.getElementById("status").innerText = data.status;
+document.getElementById("provider").innerText = data.provider;
+document.getElementById("time").innerText = "Last update: " + data.timestamp;
+
+})
+.catch(() => {
+
+document.getElementById("status").innerText = "API Offline";
 
 });
+
 </script>
 
+</body>
+
+</html>
