@@ -1,40 +1,18 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-<title>Cloud Status</title>
-</head>
-
-<body>
-
 <h1>Status da Infraestrutura</h1>
 
-<p>API Status:</p>
-
-<h2 id="status">Carregando...</h2>
-
-<p>Timestamp:</p>
-
-<p id="time"></p>
+<div id="output"></div>
 
 <script>
-
 fetch("https://statusinfra.azurewebsites.net/api/status")
 .then(response => response.json())
 .then(data => {
 
-document.getElementById("status").innerText = data.status;
-document.getElementById("time").innerText = data.timestamp;
-
-})
-.catch(() => {
-
-document.getElementById("status").innerText = "Erro ao conectar API";
+document.getElementById("output").innerHTML =
+"Service: " + data.service + "<br>" +
+"Status: " + data.status + "<br>" +
+"Provider: " + data.provider + "<br>" +
+"Timestamp: " + data.timestamp;
 
 });
-
 </script>
 
-</body>
-
-</html>
