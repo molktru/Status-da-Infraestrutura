@@ -74,21 +74,14 @@ color:#888;
 
 <script>
 
-fetch("https://statusinfra.azurewebsites.net/api/status")
+fetch("https://SEUAPP.azurewebsites.net/api/status")
 .then(response => response.json())
 .then(data => {
 
 document.getElementById("service").innerText = data.service;
 document.getElementById("status").innerText = data.status;
 document.getElementById("provider").innerText = data.provider;
-
-const date = new Date(data.timestamp);
-
-const formatted = date.toLocaleString("pt-BR", {
-timeZone: "America/Sao_Paulo"
-});
-
-document.getElementById("time").innerText = "Última atualização: " + formatted;
+document.getElementById("time").innerText = "Last update: " + data.timestamp;
 
 })
 .catch(() => {
